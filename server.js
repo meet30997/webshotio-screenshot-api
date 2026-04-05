@@ -25,6 +25,7 @@ app.disable('x-powered-by');
 const browserManager = new BrowserManager({
   logger,
   launchArgs: config.chromiumArgs,
+  executablePath: config.puppeteerExecutablePath,
   headless: config.headless,
 });
 

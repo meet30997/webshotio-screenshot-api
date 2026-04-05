@@ -31,9 +31,10 @@ function withTimeout(promise, timeoutMs, message) {
 }
 
 export class BrowserManager {
-  constructor({ logger, launchArgs, headless = true }) {
+  constructor({ logger, launchArgs, executablePath = '', headless = true }) {
     this.logger = logger;
     this.launchArgs = launchArgs;
+    this.executablePath = executablePath;
     this.headless = headless;
     this.browser = null;
     this.launchPromise = null;
@@ -52,6 +53,7 @@ export class BrowserManager {
       .launch({
         headless: this.headless,
         args: this.launchArgs,
+        executablePath: this.executablePath || undefined,
       })
       .then((browser) => {
         this.browser = browser;

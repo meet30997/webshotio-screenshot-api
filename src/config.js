@@ -97,6 +97,7 @@ export const config = Object.freeze({
     '--disable-setuid-sandbox',
     '--disable-dev-shm-usage',
   ]),
+  puppeteerExecutablePath: process.env.PUPPETEER_EXECUTABLE_PATH?.trim() || '',
   headless: parseBooleanEnv('PUPPETEER_HEADLESS', true),
   userAgent: process.env.SCREENSHOT_USER_AGENT?.trim() || '',
   prewarmBrowser: parseBooleanEnv('PREWARM_BROWSER', true),
@@ -136,6 +137,7 @@ export function publicConfigSnapshot() {
     rateLimitWindowMs: config.rateLimitWindowMs,
     rateLimitMax: config.rateLimitMax,
     corsOrigins: config.corsOrigins,
+    hasPuppeteerExecutablePath: Boolean(config.puppeteerExecutablePath),
     prewarmBrowser: config.prewarmBrowser,
   };
 }

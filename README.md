@@ -160,8 +160,12 @@ Environment variables are defined in `.env.example`.
 
 - `PUPPETEER_HEADLESS` (default: `true`)
 - `PREWARM_BROWSER` (default: `true`)
+- `PUPPETEER_CACHE_DIR` (optional, recommended on Render)
+- `PUPPETEER_EXECUTABLE_PATH` (optional, absolute Chrome/Chromium path)
 - `CHROMIUM_ARGS` (comma-separated)
 - `SCREENSHOT_USER_AGENT` (optional)
+
+`npm install` runs `npm run install:browser` to fetch the compatible Chrome binary for Puppeteer.
 
 ## Local Testing
 
@@ -187,6 +191,19 @@ Rate-limit check:
 ```bash
 for i in $(seq 1 130); do curl -s -o /dev/null -w "%{http_code}\n" "http://localhost:3000/screenshot?url=notaurl"; done | tail -n 15
 ```
+
+## Render Chrome Setup
+
+If Render logs show `Could not find Chrome`, verify:
+
+1. Build command does not disable npm scripts (`--ignore-scripts` must not be used).
+2. Dependency install runs successfully (`npm ci` or `npm install`).
+3. Environment variable `PUPPETEER_CACHE_DIR=/opt/render/project/src/.cache/puppeteer` is set.
+4. Redeploy with cache clear once, so Chrome is downloaded during install.
+
+Optional fallback:
+
+- Set `PUPPETEER_EXECUTABLE_PATH` if your Render image provides a system Chrome/Chromium binary.
 
 ## Run With PM2
 

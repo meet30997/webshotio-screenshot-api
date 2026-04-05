@@ -89,6 +89,18 @@ h1 {
   color: var(--ink-soft);
 }
 
+.hosting-note {
+  margin: 0.72rem 0 0;
+  max-width: 68ch;
+  padding: 0.62rem 0.72rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(15, 118, 110, 0.26);
+  background: rgba(15, 118, 110, 0.08);
+  color: #0b4f4f;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
 .panel {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.8);
