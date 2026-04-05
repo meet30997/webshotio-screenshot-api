@@ -50,9 +50,11 @@ Set ALLOWED_ORIGINS on the API service to include your Pages domain, for example
 
 https://<username>.github.io
 
-If your repository uses project pages, include that full origin as well:
+Use origin only (scheme + host). Do not include a path.
 
-https://<username>.github.io/<repo>
+If you use a custom domain for Pages, include that origin instead, for example:
+
+https://shots.example.com
 
 ## Notes
 
