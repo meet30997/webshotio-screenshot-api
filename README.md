@@ -198,6 +198,16 @@ pm2 status
 pm2 logs webshotio
 ```
 
+## Frontend Test UI
+
+A minimal static browser UI is available in [frontend/README.md](frontend/README.md).
+
+It can be hosted on GitHub Pages and is preconfigured to target:
+
+`https://webshotio-screenshot-api.onrender.com`
+
+The deployment workflow is in `.github/workflows/deploy-frontend-pages.yml`.
+
 ## Operational Notes
 
 - The queue and rate limiter are in-memory. In multi-instance deployments, limits apply per instance.

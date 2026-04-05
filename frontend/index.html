@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Minimal Webshotio test UI for generating screenshots from the screenshot API."
+    />
+    <title>Webshotio Test UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Webshotio</p>
+        <h1>Screenshot Test UI</h1>
+        <p class="hero-copy">
+          A lightweight frontend for quick screenshot checks from your hosted API.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="capture-title">
+        <h2 id="capture-title">Capture Request</h2>
+
+        <form id="capture-form" novalidate>
+          <label for="api-base">API Base URL</label>
+          <input
+            id="api-base"
+            name="apiBase"
+            type="url"
+            required
+            inputmode="url"
+            spellcheck="false"
+            autocomplete="off"
+          />
+
+          <label for="target-url">Target URL</label>
+          <input
+            id="target-url"
+            name="targetUrl"
+            type="url"
+            required
+            placeholder="https://example.com"
+            inputmode="url"
+            spellcheck="false"
+            autocomplete="off"
+          />
+
+          <div class="grid-three">
+            <div>
+              <label for="width">Width</label>
+              <input id="width" name="width" type="number" min="320" max="2560" step="1" value="1280" required />
+            </div>
+            <div>
+              <label for="height">Height</label>
+              <input id="height" name="height" type="number" min="240" max="1600" step="1" value="800" required />
+            </div>
+            <div>
+              <label for="wait-ms">Wait (ms)</label>
+              <input id="wait-ms" name="waitMs" type="number" min="0" max="15000" step="100" value="0" required />
+            </div>
+          </div>
+
+          <label for="download">Download Name (optional)</label>
+          <input
+            id="download"
+            name="download"
+            type="text"
+            maxlength="120"
+            placeholder="homepage"
+            autocomplete="off"
+          />
+
+          <p class="hint" id="validation-hint">
+            Allowed: http/https URLs, width 320-2560, height 240-1600, wait 0-15000ms.
+          </p>
+
+          <div class="actions">
+            <button id="capture-button" type="submit">Capture Screenshot</button>
+            <button id="reset-button" type="reset" class="ghost">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="result-title">
+        <h2 id="result-title">Result</h2>
+
+        <p id="status" class="status" aria-live="polite">Ready to capture.</p>
+        <p id="rate-limit" class="rate-limit" aria-live="polite"></p>
+        <p id="error" class="error" aria-live="assertive" hidden></p>
+
+        <div id="preview-wrap" class="preview-wrap" hidden>
+          <img id="preview" alt="Screenshot preview" />
+          <div class="preview-actions">
+            <a id="open-link" href="#" target="_blank" rel="noopener noreferrer">Open Image</a>
+            <a id="download-link" href="#" download="screenshot.png">Download</a>
+          </div>
+          <p id="preview-meta" class="preview-meta"></p>
+        </div>
+
+        <p id="empty-state" class="empty-state">
+          Your captured screenshot will appear here.
+        </p>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
